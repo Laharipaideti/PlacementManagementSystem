@@ -1,8 +1,12 @@
 public with sharing class NotificationService {
 
-    public static void sendNotification(Application__c app){
+    public static void sendNotifications(List<Application__c> applications){
 
-        System.debug('Notification sent for Application : ' + app.Id);
+        for(Application__c app : applications){
+
+            System.debug('Notification sent for Application : ' + app.Id);
+
+        }
 
     }
 

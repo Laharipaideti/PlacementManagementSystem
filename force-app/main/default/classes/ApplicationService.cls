@@ -13,6 +13,7 @@ public with sharing class ApplicationService {
         ];
     }
     public static Job__c getJob(Id jobId) {
+        
 
         return [
             SELECT Id,
@@ -99,5 +100,32 @@ public with sharing class ApplicationService {
 
         return 'Application Status Updated Successfully';
     }
+public static void validateApplications(List<Application__c> applications) {
 
+    System.debug('Applications received: ' + applications.size());
+
+    Set<Id> studentIds = new Set<Id>();
+
+    for (Application__c app : applications) {
+        studentIds.add(app.Student__c);
+    }
+
+    System.debug('Student IDs: ' + studentIds);
+
+    Map<Id, Student__c> studentMap = new Map<Id, Student__c>([
+        SELECT Id, Name, CGPA__c
+        FROM Student__c
+        WHERE Id IN :studentIds
+    ]);
+
+    System.debug('Students found: ' + studentMap.size());
+
+    for (Application__c app : applications) {
+        Student__c student = studentMap.get(app.Student__c);
+
+        if (student != null) {
+            System.debug('Student Name: ' + student.Name);
+        }
+    }
+}
 }
