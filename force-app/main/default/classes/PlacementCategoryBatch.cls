@@ -16,6 +16,7 @@ implements Database.Batchable<SObject> {
             if(app.Status__c == 'Selected'){
                 System.debug(app.Name + ' is Placed');
             }
+            
             else{
                 System.debug(app.Name + ' is Not Placed');
             }

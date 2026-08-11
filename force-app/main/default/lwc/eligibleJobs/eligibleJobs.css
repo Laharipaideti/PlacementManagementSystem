@@ -1,0 +1,32 @@
+.job-card {
+    padding: 16px 0;
+    border-bottom: 1px solid #d8dde6;
+}
+
+.job-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.job-card p {
+    margin: 4px 0;
+}
+
+.button-container {
+    margin-top: 12px;
+}
+
+.apply-button {
+    margin-left: 8px;
+}
+
+.success-message {
+    color: #008767;
+    font-weight: 600;
+}
+
+.error-message {
+    color: #ba0517;
+    font-weight: 600;
+}

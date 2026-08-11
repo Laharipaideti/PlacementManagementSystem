@@ -1,0 +1,112 @@
+<template>
+
+    <lightning-card>
+
+        <div class="profile-container">
+
+            <h1 class="profile-title">
+                Student Profile
+            </h1>
+
+            <lightning-record-edit-form
+                object-api-name="student__c"
+                record-id={recordId}
+                onsuccess={handleSuccess}
+                onerror={handleError}>
+
+                <div class="form-container">
+
+                    <!-- Student Name -->
+                    <lightning-input
+                        class="form-field"
+                        label="Student Name"
+                        value={studentName}
+                        onchange={handleNameChange}>
+                    </lightning-input>
+
+
+                    <!-- Email -->
+                    <lightning-input
+                        class="form-field"
+                        type="email"
+                        label="Email"
+                        required
+                        value={email}
+                        onchange={handleEmailChange}>
+                    </lightning-input>
+
+
+                    <!-- Phone -->
+                    <lightning-input
+                        class="form-field"
+                        type="tel"
+                        label="Phone"
+                        required
+                        value={phone}
+                        onchange={handlePhoneChange}>
+                    </lightning-input>
+
+
+                    <!-- Branch -->
+                    <lightning-combobox
+                        class="form-field"
+                        label="Branch"
+                        required
+                        value={branch}
+                        options={branchOptions}
+                        onchange={handleBranchChange}>
+                    </lightning-combobox>
+
+
+                    <!-- CGPA -->
+                    <lightning-input
+                        class="form-field"
+                        type="number"
+                        label="cgpa"
+                        required
+                        value={cgpa}
+                        step="0.01"
+                        onchange={handleCgpaChange}>
+                    </lightning-input>
+
+
+                    <!-- Skills -->
+                    <lightning-textarea
+                        class="form-field"
+                        label="Skills"
+                        value={skills}
+                        onchange={handleSkillsChange}>
+                    </lightning-textarea>
+
+
+                    <!-- Preferred Location -->
+                    <lightning-combobox
+                        class="form-field"
+                        label="Preferred Location"
+                        value={preferredLocation}
+                        options={locationOptions}
+                        onchange={handleLocationChange}>
+                    </lightning-combobox>
+
+
+                    <!-- Save Button -->
+                    <div class="button-container">
+
+                        <lightning-button
+                            variant="brand"
+                            label="Save Profile"
+                            type="submit"
+                            onclick={handleSubmit}>
+                        </lightning-button>
+
+                    </div>
+
+                </div>
+
+            </lightning-record-edit-form>
+
+        </div>
+
+    </lightning-card>
+
+</template>

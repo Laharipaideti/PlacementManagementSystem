@@ -1,0 +1,55 @@
+<template>
+
+    <lightning-card title={job.Name}>
+
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_small">
+                <strong>Status:</strong>
+                {job.Status__c}
+            </p>
+
+            <p class="slds-m-bottom_small">
+                <strong>Minimum CGPA:</strong>
+                {job.Minimum_CGPA__c}
+            </p>
+
+            <p class="slds-m-bottom_small">
+                <strong>Eligible Branches:</strong>
+                {job.Eligible_Branches__c}
+            </p>
+
+            <p class="slds-m-bottom_medium">
+                <strong>Deadline:</strong>
+                {job.Last_Date__c}
+            </p>
+
+            <div class="slds-grid slds-gutters">
+
+                <div class="slds-col">
+
+                    <lightning-button
+                        label="View Details"
+                        onclick={handleViewDetails}>
+                    </lightning-button>
+
+                </div>
+
+                <div class="slds-col">
+
+                    <lightning-button
+                        variant="brand"
+                        label={buttonLabel}
+                        onclick={handleApply}
+                        disabled={isApplying}>
+                    </lightning-button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+
+</template>

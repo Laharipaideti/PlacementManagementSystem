@@ -1,0 +1,31 @@
+<template>
+
+    <lightning-card
+        title={application.Job__r.Name}>
+
+        <div class="slds-p-around_medium">
+
+            <p class="slds-m-bottom_small">
+
+                <strong>Application Date:</strong>
+
+                {application.Application_Date__c}
+
+            </p>
+
+
+            <p class="slds-m-bottom_small">
+
+                <strong>Status:</strong>
+
+                <c-status-badge
+                    status={application.Status__c}>
+                </c-status-badge>
+
+            </p>
+
+        </div>
+
+    </lightning-card>
+
+</template>

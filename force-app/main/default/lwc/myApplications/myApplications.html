@@ -1,0 +1,83 @@
+<template>
+
+    <lightning-card
+        title="My Applications"
+        icon-name="standard:record">
+
+        <div class="slds-p-around_medium">
+
+
+            <!-- LOADING -->
+
+            <template if:true={isLoading}>
+
+                <lightning-spinner
+                    alternative-text="Loading applications">
+                </lightning-spinner>
+
+            </template>
+
+
+            <!-- ERROR -->
+
+            <template if:true={errorMessage}>
+
+                <div
+                    class="slds-notify
+                           slds-notify_alert
+                           slds-theme_error">
+
+                    {errorMessage}
+
+                </div>
+
+            </template>
+
+
+            <!-- EMPTY -->
+
+            <template if:true={showEmpty}>
+
+                <c-empty-state
+                    title="No Applications"
+                    message="You have not applied for any jobs yet.">
+                </c-empty-state>
+
+            </template>
+
+
+            <!-- APPLICATIONS -->
+
+            <template if:true={showApplications}>
+
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <template
+                        for:each={applications}
+                        for:item="application">
+
+                        <div
+                            key={application.Id}
+                            class="slds-col
+                                   slds-size_1-of-1
+                                   slds-medium-size_1-of-2
+                                   slds-large-size_1-of-3
+                                   slds-m-bottom_medium">
+
+                            <c-application-card
+                                application={application}>
+                            </c-application-card>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

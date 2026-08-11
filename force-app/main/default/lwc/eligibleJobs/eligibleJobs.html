@@ -1,0 +1,159 @@
+<template>
+
+    <lightning-card
+        title="Eligible Jobs"
+        icon-name="standard:job_profile">
+
+        <div class="slds-p-around_medium">
+
+
+            <!-- LOADING -->
+
+            <template if:true={isLoading}>
+
+                <div class="slds-is-relative">
+
+                    <lightning-spinner
+                        alternative-text="Loading eligible jobs">
+                    </lightning-spinner>
+
+                    <p class="slds-text-align_center slds-p-around_medium">
+                        Loading eligible jobs...
+                    </p>
+
+                </div>
+
+            </template>
+
+
+            <!-- ERROR -->
+
+            <template if:true={errorMessage}>
+
+                <div
+                    class="slds-notify
+                           slds-notify_alert
+                           slds-theme_error
+                           slds-m-bottom_medium">
+
+                    {errorMessage}
+
+                </div>
+
+            </template>
+
+
+            <!-- SUCCESS -->
+
+            <template if:true={successMessage}>
+
+                <div
+                    class="slds-notify
+                           slds-notify_alert
+                           slds-theme_success
+                           slds-m-bottom_medium">
+
+                    {successMessage}
+
+                </div>
+
+            </template>
+
+
+            <!-- EMPTY -->
+
+            <template if:true={showEmpty}>
+
+                <c-empty-state
+                    title="No Eligible Jobs"
+                    message="No eligible opportunities are available right now. Keep your profile updated and check again as new companies are added.">
+                </c-empty-state>
+
+            </template>
+
+
+            <!-- JOB LIST -->
+
+            <template if:true={showJobs}>
+
+                <div class="slds-grid slds-wrap slds-gutters">
+
+                    <template
+                        for:each={jobs}
+                        for:item="job">
+
+                        <div
+                            key={job.Id}
+                            class="slds-col
+                                   slds-size_1-of-1
+                                   slds-medium-size_1-of-2
+                                   slds-large-size_1-of-3
+                                   slds-m-bottom_medium">
+
+                            <c-job-card
+                                job={job}
+                                is-applying={isApplying}
+                                onapply={handleApply}
+                                onviewdetails={handleViewDetails}>
+                            </c-job-card>
+
+                        </div>
+
+                    </template>
+
+                </div>
+
+            </template>
+
+
+            <!-- SELECTED JOB -->
+
+            <template if:true={selectedJob}>
+
+                <div
+                    class="slds-box
+                           slds-theme_default
+                           slds-m-top_medium">
+
+                    <h2
+                        class="slds-text-heading_medium
+                               slds-m-bottom_medium">
+
+                        Job Details
+
+                    </h2>
+
+                    <p>
+                        <strong>Job:</strong>
+                        {selectedJob.Name}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        {selectedJob.Status__c}
+                    </p>
+
+                    <p>
+                        <strong>Minimum CGPA:</strong>
+                        {selectedJob.Minimum_CGPA__c}
+                    </p>
+
+                    <p>
+                        <strong>Eligible Branches:</strong>
+                        {selectedJob.Eligible_Branches__c}
+                    </p>
+
+                    <p>
+                        <strong>Deadline:</strong>
+                        {selectedJob.Last_Date__c}
+                    </p>
+
+                </div>
+
+            </template>
+
+        </div>
+
+    </lightning-card>
+
+</template>

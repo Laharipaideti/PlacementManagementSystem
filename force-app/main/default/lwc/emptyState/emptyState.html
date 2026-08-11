@@ -1,0 +1,36 @@
+<template>
+
+    <div class="slds-align_absolute-center slds-p-around_large">
+
+        <div class="slds-text-align_center">
+
+            <lightning-icon
+                icon-name="utility:info"
+                alternative-text="Information"
+                size="medium">
+            </lightning-icon>
+
+            <h2 class="slds-text-heading_medium slds-m-top_small">
+                {title}
+            </h2>
+
+            <p class="slds-text-body_regular slds-m-top_small">
+                {message}
+            </p>
+
+            <template if:true={showAction}>
+
+                <lightning-button
+                    class="slds-m-top_medium"
+                    variant="brand"
+                    label={actionLabel}
+                    onclick={handleAction}>
+                </lightning-button>
+
+            </template>
+
+        </div>
+
+    </div>
+
+</template>
