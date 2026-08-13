@@ -1,13 +1,12 @@
 trigger ApplicationTrigger on Application__c (
-    before insert,
+    after insert,
     after update
 ) {
 
-    if (Trigger.isBefore && Trigger.isInsert) {
-        ApplicationTriggerHandler.beforeInsert(Trigger.new);
-    }
-
-    if (Trigger.isAfter && Trigger.isUpdate) {
-        ApplicationTriggerHandler.afterUpdate(Trigger.new);
-    }
+    ApplicationTriggerHandler.handleAfter(
+        Trigger.new,
+        Trigger.oldMap,
+        Trigger.isInsert,
+        Trigger.isUpdate
+    );
 }
