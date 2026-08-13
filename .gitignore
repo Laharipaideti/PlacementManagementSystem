@@ -46,3 +46,27 @@ $RECYCLE.BIN/
 **/__pycache__/
 **/.venv/
 **/venv/
+# Placement Management System Deployment Guide
+
+## Prerequisites
+
+- Salesforce CLI
+- Git
+- Salesforce Developer Org access
+- Appropriate Salesforce permissions
+- VS Code
+
+## Project Structure
+
+The Salesforce metadata is stored under:
+
+force-app/main/default/
+
+## Authentication
+
+Authenticate the Salesforce org using Salesforce CLI.
+
+## Retrieve Metadata
+
+```bash
+sf project retrieve start --target-org placement-dev
